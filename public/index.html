@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d9488">
+
+  <title>Sahyog Caring Bureau - Compassionate Healthcare at Home</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="talk-sahyog/talk-sahyog.css">
+  <script src="talk-sahyog/talk-sahyog.js" defer></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      width: 100%;
+    }
+
+    body {
+      width: 100%;
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg,
+    video {
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    input,
+    textarea {
+      max-width: 100%;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    section[id] {
+      scroll-margin-top: 92px;
+    }
+
+    button,
+    a,
+    input,
+    textarea {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(20, 184, 166, 0.55);
+      outline-offset: 3px;
+    }
+
+    .modal-backdrop {
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(20, 184, 166, 0.15) 0%,
+          transparent 70%
+        );
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    .pulse-animation {
+      animation: pulseGlow 4s infinite ease-in-out;
+    }
+
+    /* Prevent long email/text from breaking mobile layout */
+    .break-mobile {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    /* Mobile menu animation */
+    #mobileMenu {
+      transition:
+        max-height 0.3s ease,
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+    }
+
+    #mobileMenu.hidden-menu {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+
+    #mobileMenu.open-menu {
+      max-height: 500px;
+      opacity: 1;
+      visibility: visible;
+      overflow: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Mobile-only improvements */
+    @media (max-width: 767px) {
+
+      .pulse-animation {
+        animation: none;
+      }
+
+      .mobile-no-break {
+        white-space: normal !important;
+      }
+
+      #requirementModal {
+        align-items: flex-start;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      #requirementModal > div {
+        max-height: calc(100vh - 32px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      input,
+      textarea,
+      select {
+        font-size: 16px !important;
+      }
+
+      body {
+        padding-bottom: 76px;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      .hero-badges {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-badge {
+        justify-content: flex-start;
+      }
+
+      .contact-heading {
+        font-size: 1.75rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- =========================================================
+       NAVBAR
+  ========================================================== -->
+
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex justify-between min-h-20 items-center gap-3">
+
+        <!-- Logo -->
+
+        <a href="#home" class="flex items-center space-x-3 group min-w-0">
+
+          <div class="w-11 h-11 flex-shrink-0 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:rotate-6 transition-transform">
+
+            <i class="fa-solid fa-heart-pulse text-2xl"></i>
+
+          </div>
+
+          <div class="min-w-0">
+
+            <span class="text-xl sm:text-xl font-bold text-slate-900 tracking-tight block truncate">
+              Sahyog Caring Bureau
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <!-- Desktop Navigation -->
+
+        <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+
+          <a
+            href="#home"
+            class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors"
+          >
+            Home
+          </a>
+
+           <a
+             href="#services"
+            class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors"
+          >
+             Services
+          </a>
+
+           <a
+             href="#how-it-works"
+            class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors"
+          >
+             How It Works
+          </a>
+
+          <a
+            href="faq.html"
+            class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors"
+          >
+            FAQs
+          </a>
+
+        </div>
+
+
+        <!-- Desktop Action Button -->
+
+        <div class="hidden md:block flex-shrink-0">
+
+          <button
+            onclick="openModal()"
+            class="inline-flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all active:translate-y-0"
+          >
+
+            <i class="fa-solid fa-plus-circle text-lg"></i>
+
+            <span>
+              Add Your Requirement
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+          id="mobileMenuButton"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          class="md:hidden flex-shrink-0 w-11 h-11 rounded-xl bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 flex items-center justify-center transition-colors"
+          onclick="toggleMobileMenu()"
+        >
+
+          <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
+
+        </button>
+
+      </div>
+
+
+      <!-- Mobile Navigation -->
+
+      <div
+        id="mobileMenu"
+        class="hidden-menu md:hidden"
+      >
+
+        <div class="pb-4 pt-2 space-y-1 border-t border-slate-100">
+
+          <a
+            href="#home"
+            onclick="closeMobileMenu()"
+            class="block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors"
+          >
+            <i class="fa-solid fa-house w-5"></i>
+            Home
+          </a>
+
+          <a
+            href="#about"
+            onclick="closeMobileMenu()"
+            class="block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors"
+          >
+            <i class="fa-solid fa-circle-info w-5"></i>
+            About Us
+          </a>
+
+           <a
+             href="#services"
+            onclick="closeMobileMenu()"
+            class="block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors"
+          >
+             <i class="fa-solid fa-hand-holding-heart w-5"></i>
+             Services
+          </a>
+
+           <a
+             href="#how-it-works"
+            onclick="closeMobileMenu()"
+            class="block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors"
+          >
+             <i class="fa-solid fa-list-check w-5"></i>
+             How It Works
+          </a>
+
+          <a href="faq.html" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+            <i class="fa-solid fa-circle-question w-5"></i> FAQs
+          </a>
+
+          <a href="#contact" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+            <i class="fa-solid fa-phone w-5"></i> Contact
+          </a>
+
+          <button
+            onclick="closeMobileMenu(); openModal();"
+            class="w-full mt-2 flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-3 rounded-xl shadow-lg shadow-brand-500/20 transition-all"
+          >
+            <i class="fa-solid fa-plus-circle"></i>
+            <span>Add Your Requirement</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================================================
+       HERO SECTION
+  ========================================================== -->
+
+  <section
+    id="home"
+    class="relative overflow-hidden py-14 sm:py-20 lg:py-28 hero-glow"
+  >
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+
+        <!-- Left Column -->
+
+        <div class="space-y-7 sm:space-y-8 min-w-0">
+
+          <div class="inline-flex max-w-full items-center space-x-2 bg-brand-50 border border-brand-100 text-brand-700 px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide uppercase">
+
+            <i class="fa-solid fa-shield-heart text-brand-500 flex-shrink-0"></i>
+
+            <span>
+              Care support, discussed with your family
+            </span>
+
+          </div>
+
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+
+            Find the right
+
+            <span class="text-brand-600 underline decoration-brand-500/30 decoration-wavy">
+              caretaker support
+            </span>
+
+          </h1>
+
+
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+
+            Sahyog Caring Bureau helps families discuss caretaker support for recovery, elderly care and everyday assistance at home.
+
+          </p>
+
+
+          <!-- Hero Buttons -->
+
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+
+            <button
+              onclick="openModal()"
+              class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:-translate-y-1 transition-all flex items-center justify-center space-x-3 text-base sm:text-lg"
+            >
+
+              <i class="fa-solid fa-user-plus"></i>
+
+              <span>
+                Find a Caretaker
+              </span>
+
+            </button>
+
+
+            <a
+              href="talk-sahyog/"
+              data-open-sahyog-chat
+              onclick="openSahyogChat(); return false;"
+              class="w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-700 font-semibold px-8 py-4 rounded-xl border border-slate-200 shadow-sm transition-all text-center flex items-center justify-center space-x-2"
+            >
+
+              <span>
+                Talk to Sahyog
+              </span>
+
+              <i class="fa-solid fa-arrow-right text-sm"></i>
+
+            </a>
+
+          </div>
+
+
+          <!-- Feature Badges -->
+
+          <div class="hero-badges pt-6 border-t border-slate-200/80 grid grid-cols-1 min-[421px]:grid-cols-3 gap-4">
+
+            <div class="hero-badge flex items-center space-x-3">
+
+              <i class="fa-solid fa-clock text-brand-600 text-xl flex-shrink-0"></i>
+
+              <span class="text-sm font-semibold text-slate-700">
+                Direct contact
+              </span>
+
+            </div>
+
+
+            <div class="hero-badge flex items-center space-x-3">
+
+              <i class="fa-solid fa-user-check text-brand-600 text-xl flex-shrink-0"></i>
+
+              <span class="text-sm font-semibold text-slate-700">
+                Needs discussed
+              </span>
+
+            </div>
+
+
+            <div class="hero-badge flex items-center space-x-3">
+
+              <i class="fa-solid fa-hand-holding-heart text-brand-600 text-xl flex-shrink-0"></i>
+
+              <span class="text-sm font-semibold text-slate-700">
+                Clear next steps
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Right Column - Visual Card -->
+
+        <div class="relative flex justify-center min-w-0">
+
+          <div class="w-full max-w-lg bg-white p-5 sm:p-8 rounded-3xl shadow-2xl border border-slate-100 relative z-10 pulse-animation">
+
+            <div class="flex items-center space-x-4 mb-6">
+
+              <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 bg-brand-100 rounded-2xl flex items-center justify-center text-brand-600">
+
+                <i class="fa-solid fa-user-nurse text-2xl sm:text-3xl"></i>
+
+              </div>
+
+
+              <div class="min-w-0">
+
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">
+                  Caretaker Support
+                </h3>
+
+                <p class="text-slate-500 text-xs sm:text-sm">
+                  Dedicated Assistance at Home
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="space-y-4">
+
+              <!-- Care item 1 -->
+
+              <div class="flex flex-col min-[400px]:flex-row min-[400px]:items-center min-[400px]:justify-between gap-2 p-3.5 bg-slate-50 rounded-xl">
+
+                <span class="text-sm font-medium text-slate-600 break-mobile">
+
+                  <i class="fa-solid fa-check text-brand-500 mr-2"></i>
+
+                  Elderly Daily Care
+
+                </span>
+
+                <span class="self-start min-[400px]:self-auto text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md whitespace-nowrap">
+                  Discuss needs
+                </span>
+
+              </div>
+
+
+              <!-- Care item 2 -->
+
+              <div class="flex flex-col min-[400px]:flex-row min-[400px]:items-center min-[400px]:justify-between gap-2 p-3.5 bg-slate-50 rounded-xl">
+
+                <span class="text-sm font-medium text-slate-600 break-mobile">
+
+                  <i class="fa-solid fa-check text-brand-500 mr-2"></i>
+
+                  Post-Surgery Nursing
+
+                </span>
+
+                <span class="self-start min-[400px]:self-auto text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md whitespace-nowrap">
+                  Discuss needs
+                </span>
+
+              </div>
+
+
+              <!-- Care item 3 -->
+
+              <div class="flex flex-col min-[400px]:flex-row min-[400px]:items-center min-[400px]:justify-between gap-2 p-3.5 bg-slate-50 rounded-xl">
+
+                <span class="text-sm font-medium text-slate-600 break-mobile">
+
+                  <i class="fa-solid fa-check text-brand-500 mr-2"></i>
+
+                  Bedridden Patient Assistance
+
+                </span>
+
+                <span class="self-start min-[400px]:self-auto text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md whitespace-nowrap">
+                  Discuss needs
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <button
+              onclick="openModal()"
+              class="w-full mt-6 bg-slate-900 hover:bg-brand-600 text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center space-x-2"
+            >
+
+              <span>
+                Book Caretaker Now
+              </span>
+
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="services" class="py-16 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10 sm:mb-12">
+        <p class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-3">Care options to discuss</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">Start with the care situation, then discuss the right support.</h2>
+        <p class="mt-4 text-slate-600 leading-relaxed">These are common care needs families ask about. Availability and a suitable arrangement are discussed after Sahyog understands your requirement.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <button onclick="startCareGuide('Elderly person')" class="text-left p-5 rounded-2xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all"><i class="fa-solid fa-person-cane text-brand-600 text-xl"></i><h3 class="mt-4 font-bold text-slate-900">Elderly Care</h3><p class="mt-2 text-sm text-slate-600">Daily support, companionship and assistance with routines.</p></button>
+        <button onclick="startCareGuide('Patient')" class="text-left p-5 rounded-2xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all"><i class="fa-solid fa-user-nurse text-brand-600 text-xl"></i><h3 class="mt-4 font-bold text-slate-900">Patient Care</h3><p class="mt-2 text-sm text-slate-600">Care support at home after discussing individual needs.</p></button>
+        <button onclick="startCareGuide('Bedridden person')" class="text-left p-5 rounded-2xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all"><i class="fa-solid fa-bed text-brand-600 text-xl"></i><h3 class="mt-4 font-bold text-slate-900">Bedridden Care</h3><p class="mt-2 text-sm text-slate-600">Support needs that may include comfort, movement and routines.</p></button>
+        <button onclick="startCareGuide('Recovering person')" class="text-left p-5 rounded-2xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all"><i class="fa-solid fa-house-medical text-brand-600 text-xl"></i><h3 class="mt-4 font-bold text-slate-900">Recovery Care</h3><p class="mt-2 text-sm text-slate-600">For recovery at home after illness or a hospital stay.</p></button>
+        <button onclick="startCareGuide('Other')" class="text-left p-5 rounded-2xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all"><i class="fa-solid fa-sun text-brand-600 text-xl"></i><h3 class="mt-4 font-bold text-slate-900">Day or Short-Term Care</h3><p class="mt-2 text-sm text-slate-600">Discuss timing, duration and expected responsibilities.</p></button>
+        <button onclick="startCareGuide('Other')" class="text-left p-5 rounded-2xl border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all"><i class="fa-solid fa-clock text-brand-600 text-xl"></i><h3 class="mt-4 font-bold text-slate-900">24-Hour or Live-in Care</h3><p class="mt-2 text-sm text-slate-600">Talk through schedules and household expectations first.</p></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="care-guide" class="py-16 sm:py-20 bg-brand-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-white rounded-3xl border border-brand-100 shadow-sm p-6 sm:p-9">
+        <p class="text-xs font-bold text-brand-600 uppercase tracking-widest">Find the right care</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">A quick care-needs guide</h2>
+        <p class="mt-3 text-slate-600">This helps you prepare for a useful conversation. It does not confirm availability or replace professional medical advice.</p>
+        <div class="mt-7 grid sm:grid-cols-2 gap-5">
+          <label class="block text-sm font-bold text-slate-700">Who needs care?<select id="guideCareFor" class="mt-2 w-full rounded-xl border-slate-300 p-3"><option value="">Choose one</option><option>Elderly person</option><option>Patient</option><option>Bedridden person</option><option>Person recovering from illness/surgery</option><option>Other</option></select></label>
+          <label class="block text-sm font-bold text-slate-700">Care duration<select id="guideDuration" class="mt-2 w-full rounded-xl border-slate-300 p-3"><option value="">Choose one</option><option>Few days</option><option>Short term</option><option>Long term</option><option>Not sure</option></select></label>
+          <label class="block text-sm font-bold text-slate-700">Preferred timing<select id="guideTiming" class="mt-2 w-full rounded-xl border-slate-300 p-3"><option value="">Choose one</option><option>Daytime</option><option>Night</option><option>24 hours</option><option>Live-in</option><option>Flexible</option></select></label>
+          <div class="text-sm font-bold text-slate-700">Support needed<div class="mt-2 grid grid-cols-2 gap-2 text-sm font-medium text-slate-600"><label><input type="checkbox" value="Mobility assistance" class="guide-support mr-1">Mobility</label><label><input type="checkbox" value="Feeding assistance" class="guide-support mr-1">Feeding</label><label><input type="checkbox" value="Personal care" class="guide-support mr-1">Personal care</label><label><input type="checkbox" value="Companionship" class="guide-support mr-1">Companionship</label><label><input type="checkbox" value="Daily activities" class="guide-support mr-1">Daily activities</label><label><input type="checkbox" value="Medicine reminders" class="guide-support mr-1">Reminders</label></div></div>
+        </div>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3"><button onclick="continueFromGuide()" class="bg-brand-600 text-white font-bold px-6 py-3.5 rounded-xl">Continue with this requirement</button><a href="#families" class="font-bold text-brand-700 px-4 py-3.5">What to prepare first <i class="fa-solid fa-arrow-right ml-1"></i></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="py-16 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center max-w-2xl mx-auto"><p class="text-xs font-bold text-brand-600 uppercase tracking-widest">How Sahyog works</p><h2 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">A clear process, before any arrangement is confirmed.</h2></div><ol class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4"><li class="p-5 rounded-2xl bg-slate-50"><b class="text-brand-600">01</b><h3 class="mt-3 font-bold">Share your requirement</h3><p class="mt-2 text-sm text-slate-600">Tell us the care situation and location.</p></li><li class="p-5 rounded-2xl bg-slate-50"><b class="text-brand-600">02</b><h3 class="mt-3 font-bold">Talk to Sahyog</h3><p class="mt-2 text-sm text-slate-600">The team understands timing and support needs.</p></li><li class="p-5 rounded-2xl bg-slate-50"><b class="text-brand-600">03</b><h3 class="mt-3 font-bold">Discuss options</h3><p class="mt-2 text-sm text-slate-600">Suitable options can be discussed before you decide.</p></li><li class="p-5 rounded-2xl bg-slate-50"><b class="text-brand-600">04</b><h3 class="mt-3 font-bold">Confirm and coordinate</h3><p class="mt-2 text-sm text-slate-600">Care coordination begins only after client confirmation.</p></li></ol></div>
+  </section>
+
+  <section id="families" class="py-16 sm:py-20 bg-slate-100"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-start"><div><p class="text-xs font-bold text-brand-600 uppercase tracking-widest">For families</p><h2 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">Prepare these details before you contact us.</h2><p class="mt-4 text-slate-600 leading-relaxed">Having this information ready makes it easier to discuss the right kind of support.</p></div><ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-700"><li class="bg-white p-4 rounded-xl">Person’s basic care needs</li><li class="bg-white p-4 rounded-xl">Preferred timing and duration</li><li class="bg-white p-4 rounded-xl">Location and household expectations</li><li class="bg-white p-4 rounded-xl">Responsibilities or special requirements</li></ul></div></section>
+
+  <section id="guides" class="py-16 sm:py-20 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"><div><p class="text-xs font-bold text-brand-600 uppercase tracking-widest">Care guides</p><h2 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">Useful starting points for families</h2></div><a href="faq.html" class="font-bold text-brand-700">Read FAQs <i class="fa-solid fa-arrow-right ml-1"></i></a></div><div class="mt-8 grid md:grid-cols-3 gap-5"><article class="p-6 rounded-2xl border border-slate-200"><i class="fa-solid fa-list-check text-brand-600"></i><h3 class="mt-4 font-bold text-slate-900">Before requesting care</h3><p class="mt-2 text-sm text-slate-600">Prepare timing, location, responsibilities and the person’s daily support needs.</p></article><article class="p-6 rounded-2xl border border-slate-200"><i class="fa-solid fa-comments text-brand-600"></i><h3 class="mt-4 font-bold text-slate-900">Questions to discuss</h3><p class="mt-2 text-sm text-slate-600">Use the enquiry form to ask about process, charges or any service question.</p></article><article class="p-6 rounded-2xl border border-slate-200"><i class="fa-solid fa-house text-brand-600"></i><h3 class="mt-4 font-bold text-slate-900">Care at home</h3><p class="mt-2 text-sm text-slate-600">A simple home setup and clear expectations help make the first discussion productive.</p></article></div></div></section>
+
+  <section class="py-16 sm:py-20 bg-brand-50"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="max-w-3xl"><p class="text-xs font-bold text-brand-600 uppercase tracking-widest">Care timing guide</p><h2 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">Compare the arrangement you want to discuss</h2></div><div class="mt-8 overflow-x-auto rounded-2xl border border-brand-100 bg-white"><table class="min-w-[680px] w-full text-left text-sm"><thead class="bg-brand-50 text-slate-700"><tr><th class="p-4">Arrangement</th><th class="p-4">General duration</th><th class="p-4">Useful when</th><th class="p-4"></th></tr></thead><tbody class="divide-y divide-slate-100"><tr><td class="p-4 font-bold">Day Care</td><td class="p-4">Daytime</td><td class="p-4">Support is mainly needed during the day.</td><td class="p-4"><button onclick="openModal()" class="text-brand-700 font-bold">Discuss</button></td></tr><tr><td class="p-4 font-bold">24-Hour / Live-in</td><td class="p-4">Extended support</td><td class="p-4">Families need to discuss schedules and household expectations.</td><td class="p-4"><button onclick="openModal()" class="text-brand-700 font-bold">Discuss</button></td></tr><tr><td class="p-4 font-bold">Short / Long-Term</td><td class="p-4">Flexible duration</td><td class="p-4">Needs may be temporary or ongoing.</td><td class="p-4"><button onclick="openModal()" class="text-brand-700 font-bold">Discuss</button></td></tr></tbody></table></div></div></section>
+
+  <section class="py-16 sm:py-20 bg-slate-900 text-white"><div class="max-w-3xl mx-auto px-4 sm:px-6 text-center"><p class="text-xs font-bold text-brand-400 uppercase tracking-widest">Start a conversation</p><h2 class="mt-3 text-3xl sm:text-4xl font-bold">Not sure what kind of care to request?</h2><p class="mt-4 text-slate-300">Share the basics and Sahyog can help you discuss suitable caretaker options.</p><div class="mt-7 flex flex-col sm:flex-row justify-center gap-3"><button onclick="openModal()" class="bg-brand-600 rounded-xl px-6 py-3.5 font-bold">Find a Caretaker</button><a href="tel:+917208027671" class="rounded-xl border border-slate-600 px-6 py-3.5 font-bold">Call Sahyog</a></div></div></section>
+
+  <!-- =========================================================
+       ABOUT US SECTION
+  ========================================================== -->
+
+  <section id="about" class="py-16 sm:py-20 bg-white">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+
+        <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">
+          About Sahyog Caring Bureau
+        </h2>
+
+        <p class="text-3xl sm:text-4xl font-bold text-slate-900">
+          Your Trusted Partner in Homecare & Medical Bureau Services
+        </p>
+
+      </div>
+
+
+      <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+
+        <!-- Card 1 -->
+
+        <div class="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-all">
+
+          <div class="w-12 h-12 bg-brand-600 text-white rounded-xl flex items-center justify-center text-xl mb-6">
+
+            <i class="fa-solid fa-certificate"></i>
+
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">
+            Requirement-Based Discussion
+          </h3>
+
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Care needs, timing and household expectations can be discussed before a family decides on the next step.
+          </p>
+
+        </div>
+
+
+        <!-- Card 2 -->
+
+        <div class="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-all">
+
+          <div class="w-12 h-12 bg-brand-600 text-white rounded-xl flex items-center justify-center text-xl mb-6">
+
+            <i class="fa-solid fa-heart-circle-check"></i>
+
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">
+            Personalized Attention
+          </h3>
+
+          <p class="text-slate-600 text-sm leading-relaxed">
+            We tailor homecare plans based on individual medical demands, mobility needs, and daily routines.
+          </p>
+
+        </div>
+
+
+        <!-- Card 3 -->
+
+        <div class="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-all">
+
+          <div class="w-12 h-12 bg-brand-600 text-white rounded-xl flex items-center justify-center text-xl mb-6">
+
+            <i class="fa-solid fa-headset"></i>
+
+          </div>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">
+            Quick Support
+          </h3>
+
+          <p class="text-slate-600 text-sm leading-relaxed">
+            The team helps families share a requirement and discuss suitable next steps directly.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       CONTACT SECTION
+  ========================================================== -->
+
+  <section id="contact" class="py-16 sm:py-20 bg-slate-900 text-white">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-12">
+
+        <!-- Contact Information -->
+
+        <div class="min-w-0">
+
+          <h2 class="text-xs font-bold text-brand-500 uppercase tracking-widest mb-2">
+            Contact Us
+          </h2>
+
+          <p class="contact-heading text-3xl font-bold mb-6">
+            Get in Touch with Our Bureau
+          </p>
+
+          <p class="text-slate-400 mb-8 leading-relaxed">
+            Have questions about our caretaker packages or availability? Reach out to our team directly.
+          </p>
+
+
+          <div class="space-y-6">
+
+            <!-- Phone -->
+
+            <div class="flex items-center space-x-4">
+
+              <div class="w-12 h-12 flex-shrink-0 bg-slate-800 rounded-xl flex items-center justify-center text-brand-500 text-xl">
+
+                <i class="fa-solid fa-phone"></i>
+
+              </div>
+
+              <div class="min-w-0">
+
+                <p class="text-xs text-slate-400">
+                  Phone Number
+                </p>
+
+                <a
+                  href="tel:+917208027671"
+                  class="text-lg font-semibold hover:text-brand-400 transition-colors"
+                >
+                  +91 72080 27671
+                </a>
+
+              </div>
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="flex items-start space-x-4">
+
+              <div class="w-12 h-12 flex-shrink-0 bg-slate-800 rounded-xl flex items-center justify-center text-brand-500 text-xl">
+
+                <i class="fa-solid fa-envelope"></i>
+
+              </div>
+
+              <div class="min-w-0">
+
+                <p class="text-xs text-slate-400">
+                  Email Address
+                </p>
+
+                <a
+                  href="mailto:contact@sahyogcaringhome.com"
+                  class="text-base sm:text-lg font-semibold hover:text-brand-400 transition-colors break-mobile"
+                >
+                  contact@sahyogcaringhome.com
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <button onclick="openCallbackModal()" class="mt-8 inline-flex items-center gap-2 rounded-xl border border-brand-500/50 px-5 py-3 font-bold text-brand-300 hover:bg-slate-800 transition-colors">
+            <i class="fa-solid fa-phone-volume"></i> Request a Callback
+          </button>
+
+        </div>
+
+
+        <!-- Direct Inquiry -->
+
+        <div class="bg-slate-800 p-6 sm:p-8 rounded-3xl border border-slate-700 min-w-0">
+
+          <h3 class="text-xl font-bold mb-6">
+            Direct Inquiry
+          </h3>
+
+
+          <form
+            id="inquiryForm"
+            class="space-y-4"
+            onsubmit="submitInquiry(event)"
+          >
+
+            <!-- Name -->
+
+            <div>
+
+              <label
+                for="inquiryName"
+                class="block text-xs font-semibold text-slate-300 mb-1"
+              >
+                Full Name
+              </label>
+
+              <input
+                id="inquiryName"
+                name="fullName"
+                type="text"
+                required
+                maxlength="100"
+                autocomplete="name"
+                placeholder="John Doe"
+                class="w-full min-w-0 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+              >
+
+            </div>
+
+
+            <!-- Mobile -->
+
+            <div>
+
+              <label
+                for="inquiryMobile"
+                class="block text-xs font-semibold text-slate-300 mb-1"
+              >
+                Mobile Number
+              </label>
+
+              <input
+                id="inquiryMobile"
+                name="mobileNumber"
+                type="tel"
+                required
+                maxlength="10"
+                inputmode="numeric"
+                autocomplete="tel"
+                placeholder="9876543210"
+                class="w-full min-w-0 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+              >
+
+            </div>
+
+
+            <!-- Message -->
+
+            <div>
+              <label for="inquiryCategory" class="block text-xs font-semibold text-slate-300 mb-1">What can we help with?</label>
+              <select id="inquiryCategory" name="category" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500">
+                <option value="General question">General question</option><option value="Service information">Service information</option><option value="Charges or pricing">Charges or pricing</option><option value="Availability">Availability</option><option value="Request a callback">Request a callback</option>
+              </select>
+            </div>
+
+            <div>
+
+              <label
+                for="inquiryMessage"
+                class="block text-xs font-semibold text-slate-300 mb-1"
+              >
+                Message
+              </label>
+
+              <textarea
+                id="inquiryMessage"
+                name="message"
+                rows="4"
+                required
+                maxlength="1000"
+                placeholder="How can we assist you?"
+                class="w-full min-w-0 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+              ></textarea>
+
+            </div>
+
+
+            <div
+              id="inquiryAlert"
+              class="hidden p-3 rounded-xl text-sm"
+            ></div>
+
+
+            <!-- Submit -->
+
+            <button
+              id="inquirySubmitBtn"
+              type="submit"
+              class="w-full bg-brand-600 hover:bg-brand-700 font-bold py-3.5 rounded-xl transition-colors"
+            >
+
+              <span>
+                Send Message
+              </span>
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       REQUIREMENT MODAL
+  ========================================================== -->
+
+  <div
+    id="requirementModal"
+    class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="requirementModalTitle"
+  >
+
+    <div
+      class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all"
+    >
+
+      <!-- Modal Header -->
+
+      <div class="px-5 sm:px-6 py-5 bg-slate-50 border-b border-slate-100 flex justify-between items-center gap-4">
+
+        <div class="min-w-0">
+
+          <h3 id="requirementModalTitle" class="text-base sm:text-lg font-bold text-slate-900">
+            Add Your Care Requirement
+          </h3>
+
+          <p class="text-xs text-slate-500">
+            Specify your homecare preferences
+          </p>
+
+        </div>
+
+
+        <button
+          onclick="closeModal()"
+          type="button"
+          aria-label="Close form"
+          class="w-9 h-9 flex-shrink-0 rounded-full bg-slate-200 text-slate-600 hover:bg-slate-300 flex items-center justify-center transition-colors"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+
+      <!-- Modal Form -->
+
+      <form
+        id="requirementForm"
+        onsubmit="submitRequirement(event)"
+        class="p-5 sm:p-6 space-y-5 sm:space-y-6"
+      >
+
+        <!-- Step 1 -->
+
+        <div>
+
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+            1. Select Care Service
+          </label>
+
+
+          <div class="relative border-2 border-brand-600 bg-brand-50/50 p-4 rounded-2xl flex items-start sm:items-center justify-between gap-3 cursor-pointer">
+
+            <div class="flex items-start space-x-3 min-w-0">
+
+              <div class="w-10 h-10 flex-shrink-0 bg-brand-600 text-white rounded-xl flex items-center justify-center">
+
+                <i class="fa-solid fa-user-nurse"></i>
+
+              </div>
+
+
+              <div class="min-w-0">
+
+                <p class="font-bold text-slate-900">
+                  Caretaker
+                </p>
+
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  Dedicated Homecare & Patient Assistant
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="w-6 h-6 flex-shrink-0 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs">
+
+              <i class="fa-solid fa-check"></i>
+
+            </div>
+
+          </div>
+
+
+          <!-- Hidden input -->
+
+          <input
+            type="hidden"
+            id="serviceType"
+            value="Caretaker"
+          >
+
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="requirementName" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Your Name</label>
+            <input id="requirementName" name="fullName" type="text" maxlength="100" autocomplete="name" placeholder="Your name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all">
+          </div>
+          <div>
+            <label for="careFor" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Who needs care?</label>
+            <select id="careFor" name="careFor" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all"><option value="">Select</option><option>Elderly person</option><option>Patient</option><option>Bedridden person</option><option>Person recovering from illness/surgery</option><option>Other</option></select>
+          </div>
+          <div>
+            <label for="careDuration" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Care duration</label>
+            <select id="careDuration" name="careDuration" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all"><option value="">Select</option><option>Few days</option><option>Short term</option><option>Long term</option><option>Not sure</option></select>
+          </div>
+          <div>
+            <label for="careTiming" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Preferred timing</label>
+            <select id="careTiming" name="careTiming" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all"><option value="">Select</option><option>Daytime</option><option>Night</option><option>24 hours</option><option>Live-in</option><option>Flexible</option></select>
+          </div>
+        </div>
+
+        <div>
+          <label for="careSupport" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Care needs or preferences <span class="normal-case font-medium">(optional)</span></label>
+          <input id="careSupport" name="careSupport" maxlength="500" placeholder="For example: mobility help, companionship, basic daily support" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all">
+        </div>
+
+
+        <!-- Step 2 -->
+
+        <div>
+
+          <label
+            for="mobileNumber"
+            class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2"
+          >
+            2. Mobile Number Registration
+          </label>
+
+
+          <div class="relative">
+
+            <span class="absolute left-4 top-3.5 text-slate-400 font-medium text-sm">
+              +91
+            </span>
+
+
+            <input
+              type="tel"
+              id="mobileNumber"
+              name="mobileNumber"
+              required
+              maxlength="10"
+              inputmode="numeric"
+              autocomplete="tel"
+              placeholder="9876543210"
+              class="w-full min-w-0 pl-14 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Step 3 -->
+
+        <div>
+
+          <label
+            for="address"
+            class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2"
+          >
+            3. Address & Location Details
+          </label>
+
+
+          <textarea
+            id="address"
+            name="address"
+            rows="3"
+            required
+            maxlength="1000"
+            placeholder="House/Flat No., Street, Landmark, City & Pincode"
+            class="w-full min-w-0 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all"
+          ></textarea>
+
+          <label for="additionalNotes" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 mt-4">Additional notes <span class="normal-case font-medium">(optional)</span></label>
+          <textarea id="additionalNotes" name="additionalNotes" rows="2" maxlength="2000" placeholder="Anything else the Sahyog team should know before calling?" class="w-full min-w-0 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 font-medium focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none transition-all"></textarea>
+
+        </div>
+
+
+        <!-- Feedback -->
+
+        <div
+          id="formAlert"
+          class="hidden p-3 rounded-xl text-xs font-semibold"
+        ></div>
+
+
+        <!-- Submit -->
+
+        <button
+  type="submit"
+  id="submitBtn"
+  class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-500/30 transition-all flex items-center justify-center space-x-2"
+>
+  <i class="fa-solid fa-paper-plane"></i>
+  <span>
+    Submit Requirement
+  </span>
+</button>
+
+
+<!-- Trust & Contact Information -->
+<div class="mt-4 space-y-2">
+
+  <div class="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
+    <i class="fa-solid fa-lock text-brand-600 mt-0.5 flex-shrink-0"></i>
+
+    <p>
+      Your information is used only to contact you regarding your care requirement.
+    </p>
+  </div>
+
+  <div class="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
+    <i class="fa-solid fa-phone text-brand-600 mt-0.5 flex-shrink-0"></i>
+
+    <p>
+      After submitting your requirement, our team will contact you to understand
+      your needs and discuss suitable caretaker options.
+    </p>
+  </div>
+
+</div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <div id="callbackModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="callbackModalTitle">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-100 p-6 sm:p-7">
+      <div class="flex items-start justify-between gap-4"><div><h3 id="callbackModalTitle" class="font-bold text-lg text-slate-900">Request a Callback</h3><p class="mt-1 text-sm text-slate-500">Tell us when you would prefer to talk. This is a request, not an automated booking.</p></div><button type="button" onclick="closeCallbackModal()" aria-label="Close callback form" class="w-9 h-9 shrink-0 rounded-full bg-slate-100 text-slate-600"><i class="fa-solid fa-xmark"></i></button></div>
+      <form id="callbackForm" onsubmit="submitCallback(event)" class="mt-6 space-y-4">
+        <label class="block text-sm font-semibold text-slate-700">Name<input id="callbackName" required maxlength="100" autocomplete="name" class="mt-1.5 w-full rounded-xl border border-slate-300 px-4 py-3" placeholder="Your name"></label>
+        <label class="block text-sm font-semibold text-slate-700">Mobile number<input id="callbackMobile" required maxlength="10" inputmode="numeric" autocomplete="tel" class="mt-1.5 w-full rounded-xl border border-slate-300 px-4 py-3" placeholder="9876543210"></label>
+        <label class="block text-sm font-semibold text-slate-700">Preferred callback time<select id="callbackTime" required class="mt-1.5 w-full rounded-xl border border-slate-300 px-4 py-3"><option value="">Select a time</option><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Flexible</option></select></label>
+        <label class="block text-sm font-semibold text-slate-700">Reason<select id="callbackCategory" required class="mt-1.5 w-full rounded-xl border border-slate-300 px-4 py-3"><option value="">Select a reason</option><option>Care requirement</option><option>Service information</option><option>Charges or pricing</option><option>Other</option></select></label>
+        <div id="callbackAlert" class="hidden p-3 rounded-xl text-sm" aria-live="polite"></div><button id="callbackSubmitBtn" type="submit" class="w-full rounded-xl bg-brand-600 py-3.5 font-bold text-white hover:bg-brand-700">Request Callback</button>
+      </form>
+    </div>
+  </div>
+
+  <button data-open-sahyog-chat class="sahyog-chat-launcher" aria-label="Open Talk to Sahyog"><i class="fa-solid fa-comments" aria-hidden="true"></i></button>
+  <section id="sahyogChat" class="sahyog-chat" aria-hidden="true" aria-label="Talk to Sahyog automated assistant">
+    <header class="sahyog-chat__header"><div><div class="sahyog-chat__title">Talk to Sahyog</div><div class="sahyog-chat__subtitle">Automated Assistant</div></div><button data-chat-close class="sahyog-chat__close" aria-label="Close assistant"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></header>
+    <div data-chat-messages class="sahyog-chat__messages" aria-live="polite"></div>
+    <div data-chat-replies class="sahyog-chat__replies" aria-label="Suggested replies"></div>
+    <form data-chat-form class="sahyog-chat__form"><input data-chat-input class="sahyog-chat__input" placeholder="Type your question…" aria-label="Type your question"><button class="sahyog-chat__send" aria-label="Send message"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button></form>
+  </section>
+
+  <div class="fixed bottom-0 inset-x-0 z-30 md:hidden bg-white/95 backdrop-blur border-t border-slate-200 p-3 grid grid-cols-2 gap-3">
+    <a href="tel:+917208027671" class="rounded-xl border border-brand-200 py-3 text-center font-bold text-brand-700"><i class="fa-solid fa-phone mr-1"></i> Call</a>
+    <button onclick="openModal()" class="rounded-xl bg-brand-600 py-3 font-bold text-white">Find a Caretaker</button>
+  </div>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+
+      <p>
+        &copy; 2026 Sahyog Caring Bureau. All Rights Reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
+  <script>
+
+    /* =========================================================
+       MOBILE NAVBAR
+    ========================================================== */
+
+    function toggleMobileMenu() {
+
+      const menu = document.getElementById('mobileMenu');
+      const button = document.getElementById('mobileMenuButton');
+      const icon = document.getElementById('mobileMenuIcon');
+
+      const isOpen = menu.classList.contains('open-menu');
+
+      if (isOpen) {
+
+        closeMobileMenu();
+
+      } else {
+
+        menu.classList.remove('hidden-menu');
+        menu.classList.add('open-menu');
+
+        button.setAttribute('aria-expanded', 'true');
+        icon.className = 'fa-solid fa-xmark text-lg';
+
+      }
+
+    }
+
+
+    function closeMobileMenu() {
+
+      const menu = document.getElementById('mobileMenu');
+      const button = document.getElementById('mobileMenuButton');
+      const icon = document.getElementById('mobileMenuIcon');
+
+      menu.classList.remove('open-menu');
+      menu.classList.add('hidden-menu');
+
+      button.setAttribute('aria-expanded', 'false');
+      icon.className = 'fa-solid fa-bars text-lg';
+
+    }
+
+
+    /* Close mobile menu if window becomes desktop */
+
+    window.addEventListener('resize', function () {
+
+      if (window.innerWidth >= 768) {
+        closeMobileMenu();
+      }
+
+    });
+
+    document.addEventListener('click', function (event) {
+
+      const menu = document.getElementById('mobileMenu');
+      const button = document.getElementById('mobileMenuButton');
+
+      if (
+        menu.classList.contains('open-menu') &&
+        !menu.contains(event.target) &&
+        !button.contains(event.target)
+      ) {
+        closeMobileMenu();
+      }
+
+    });
+
+    function startCareGuide(careFor) {
+      document.getElementById('guideCareFor').value = careFor;
+      document.getElementById('care-guide').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function continueFromGuide() {
+      const support = Array.from(document.querySelectorAll('.guide-support:checked'))
+        .map(function (item) { return item.value; })
+        .join(', ');
+
+      openModal();
+      document.getElementById('careFor').value = document.getElementById('guideCareFor').value;
+      document.getElementById('careDuration').value = document.getElementById('guideDuration').value;
+      document.getElementById('careTiming').value = document.getElementById('guideTiming').value;
+      document.getElementById('careSupport').value = support;
+    }
+
+
+    /* =========================================================
+       REQUIREMENT MODAL
+    ========================================================== */
+
+    function openModal() {
+
+      const modal = document.getElementById('requirementModal');
+
+      modal.classList.remove('hidden');
+
+      document.body.classList.add('overflow-hidden');
+
+      window.setTimeout(function () {
+        document.getElementById('mobileNumber').focus();
+      }, 50);
+
+    }
+
+
+    function closeModal() {
+
+      const modal = document.getElementById('requirementModal');
+
+      modal.classList.add('hidden');
+
+      document.body.classList.remove('overflow-hidden');
+
+      resetFormAlert();
+
+    }
+
+    function openCallbackModal() {
+      document.getElementById('callbackModal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      window.setTimeout(function () { document.getElementById('callbackName').focus(); }, 50);
+    }
+
+    function closeCallbackModal() {
+      document.getElementById('callbackModal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    async function submitCallback(event) {
+      event.preventDefault();
+      const alertBox = document.getElementById('callbackAlert');
+      const submitBtn = document.getElementById('callbackSubmitBtn');
+      const mobileNumber = document.getElementById('callbackMobile').value.trim();
+
+      if (!/^[6-9]\d{9}$/.test(mobileNumber)) {
+        alertBox.className = 'p-3 rounded-xl text-sm bg-red-50 text-red-600 border border-red-200';
+        alertBox.textContent = 'Please enter a valid 10-digit Indian mobile number.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending request…';
+
+      try {
+        const response = await fetch('/api/callback-requests', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fullName: document.getElementById('callbackName').value.trim(),
+            mobileNumber,
+            preferredTime: document.getElementById('callbackTime').value,
+            category: document.getElementById('callbackCategory').value
+          })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) throw new Error(result.message || 'Unable to request a callback.');
+        alertBox.className = 'p-3 rounded-xl text-sm bg-emerald-50 text-emerald-700 border border-emerald-200';
+        alertBox.textContent = result.message;
+        document.getElementById('callbackForm').reset();
+      } catch (error) {
+        alertBox.className = 'p-3 rounded-xl text-sm bg-red-50 text-red-600 border border-red-200';
+        alertBox.textContent = error.message || 'Unable to request a callback right now.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request Callback';
+      }
+    }
+
+
+    function resetFormAlert() {
+
+      const alertBox = document.getElementById('formAlert');
+
+      alertBox.className =
+        'hidden p-3 rounded-xl text-xs font-semibold';
+
+      alertBox.innerText = '';
+
+    }
+
+
+    /* Close modal when clicking outside the modal card */
+
+    document.getElementById('requirementModal').addEventListener('click', function (event) {
+
+      if (event.target === this) {
+        closeModal();
+      }
+
+    });
+
+
+    /* Escape key closes modal */
+
+    document.addEventListener('keydown', function (event) {
+
+      if (event.key === 'Escape') {
+
+        const modal = document.getElementById('requirementModal');
+
+        if (!modal.classList.contains('hidden')) {
+          closeModal();
+        }
+
+        closeCallbackModal();
+
+        closeMobileMenu();
+
+      }
+
+    });
+
+
+    /* =========================================================
+       DIRECT INQUIRY
+       BACKEND/API UNCHANGED
+    ========================================================== */
+
+    async function submitInquiry(event) {
+
+      event.preventDefault();
+
+      const form =
+        document.getElementById('inquiryForm');
+
+      const submitBtn =
+        document.getElementById('inquirySubmitBtn');
+
+      const alertBox =
+        document.getElementById('inquiryAlert');
+
+
+      const fullName =
+        document.getElementById('inquiryName').value.trim();
+
+      const mobileNumber =
+        document.getElementById('inquiryMobile').value.trim();
+
+      const message =
+        document.getElementById('inquiryMessage').value.trim();
+
+      const category = document.getElementById('inquiryCategory').value;
+
+
+      /* Phone validation */
+
+      if (!/^[6-9]\d{9}$/.test(mobileNumber)) {
+
+        alertBox.className =
+          'p-3 rounded-xl text-sm bg-red-50 text-red-600 border border-red-200 block';
+
+        alertBox.innerText =
+          'Please enter a valid 10-digit Indian mobile number starting with 6-9.';
+
+        return;
+
+      }
+
+
+      /* Loading state */
+
+      submitBtn.disabled = true;
+
+      submitBtn.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending...</span>';
+
+
+      try {
+
+        const response = await fetch('/api/inquiries', {
+
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+            fullName,
+            mobileNumber,
+            message,
+            category
+          })
+
+        });
+
+
+        const result = await response.json();
+
+
+        if (response.ok && result.success) {
+
+          alertBox.className =
+            'p-4 rounded-xl text-sm bg-emerald-50 text-emerald-700 border border-emerald-200 block';
+
+          alertBox.innerHTML = `
+            <div class="font-bold text-base mb-1">
+              Message Sent Successfully! ✓
+            </div>
+
+            <div>
+              Thank you for contacting Sahyog Caring Bureau.
+            </div>
+
+            <div>
+              Our team will call you soon on your mobile number.
+            </div>
+          `;
+
+
+          form.reset();
+
+
+          setTimeout(() => {
+
+            alertBox.className =
+              'hidden p-3 rounded-xl text-sm';
+
+            alertBox.innerText = '';
+
+          }, 5000);
+
+
+        } else {
+
+          alertBox.className =
+            'p-3 rounded-xl text-sm bg-red-50 text-red-600 border border-red-200 block';
+
+          alertBox.innerText =
+            result.message ||
+            'Unable to send your inquiry.';
+
+        }
+
+
+      } catch (error) {
+
+        alertBox.className =
+          'p-3 rounded-xl text-sm bg-red-50 text-red-600 border border-red-200 block';
+
+        alertBox.innerText =
+          'Server connection failed. Please try again.';
+
+      } finally {
+
+        submitBtn.disabled = false;
+
+        submitBtn.innerHTML =
+          '<span>Send Message</span>';
+
+      }
+
+    }
+
+
+    /* =========================================================
+       REQUIREMENT FORM
+       BACKEND/API UNCHANGED
+    ========================================================== */
+
+    async function submitRequirement(event) {
+
+      event.preventDefault();
+
+
+      const submitBtn =
+        document.getElementById('submitBtn');
+
+      const alertBox =
+        document.getElementById('formAlert');
+
+
+      const serviceType =
+        document.getElementById('serviceType').value;
+
+      const mobileNumber =
+        document.getElementById('mobileNumber').value.trim();
+
+      const address =
+        document.getElementById('address').value.trim();
+
+      const fullName = document.getElementById('requirementName').value.trim();
+      const careFor = document.getElementById('careFor').value;
+      const careSupport = document.getElementById('careSupport').value.trim();
+      const careDuration = document.getElementById('careDuration').value;
+      const careTiming = document.getElementById('careTiming').value;
+      const additionalNotes = document.getElementById('additionalNotes').value.trim();
+
+
+      /* Phone validation */
+
+      if (!/^[6-9]\d{9}$/.test(mobileNumber)) {
+
+        alertBox.className =
+          'p-3 rounded-xl text-xs font-semibold bg-red-50 text-red-600 border border-red-200 block';
+
+        alertBox.innerText =
+          'Please enter a valid 10-digit Indian mobile number starting with 6-9.';
+
+        return;
+
+      }
+
+
+      /* UI loading state */
+
+      submitBtn.disabled = true;
+
+      submitBtn.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> <span>Submitting...</span>';
+
+
+      try {
+
+        const response = await fetch('/api/requirements', {
+
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+            serviceType,
+            mobileNumber,
+            address,
+            fullName,
+            careFor,
+            careSupport,
+            careDuration,
+            careTiming,
+            additionalNotes
+          })
+
+        });
+
+
+        const result = await response.json();
+
+
+        if (response.ok && result.success) {
+
+          alertBox.className =
+            'p-4 rounded-xl text-sm bg-emerald-50 text-emerald-700 border border-emerald-200 block';
+
+          alertBox.innerHTML = `
+            <div class="font-bold text-base mb-1">
+              Registration Successful! ✓
+            </div>
+
+            <div>
+              Thank you for registering with Sahyog Caring Bureau.
+            </div>
+
+            <div>
+              You will receive a call from the Sahyog Caring Bureau team soon.
+            </div>
+          `;
+
+
+          document
+            .getElementById('requirementForm')
+            .reset();
+
+
+          setTimeout(() => {
+
+            closeModal();
+
+          }, 5000);
+
+
+        } else {
+
+          alertBox.className =
+            'p-3 rounded-xl text-xs font-semibold bg-red-50 text-red-600 border border-red-200 block';
+
+          alertBox.innerText =
+            result.message ||
+            'Error submitting requirement.';
+
+        }
+
+
+      } catch (error) {
+
+        alertBox.className =
+          'p-3 rounded-xl text-xs font-semibold bg-red-50 text-red-600 border border-red-200 block';
+
+        alertBox.innerText =
+          'Server connection failed. Make sure the Node.js backend is running.';
+
+      } finally {
+
+        submitBtn.disabled = false;
+
+        submitBtn.innerHTML =
+          '<i class="fa-solid fa-paper-plane"></i> <span>Submit Requirement</span>';
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>

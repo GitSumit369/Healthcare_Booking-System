@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -30,11 +31,16 @@ const db = mysql.createPool({
     database: process.env.DB_NAME || 'customer',
     port: Number(process.env.DB_PORT) || 3306,
 
+    ssl: process.env.DB_SSL_CA
+        ? {
+            ca: fs.readFileSync(process.env.DB_SSL_CA)
+        }
+        : undefined,
+
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
 });
-
 
 // ================================
 // CONSTANTS / VALIDATION
